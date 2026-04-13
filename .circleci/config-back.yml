@@ -1,16 +1,11 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@5.1.0
-
 jobs:
   test-api:
     docker:
       - image: cimg/node:20.0
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package-lock.json" }}
@@ -31,8 +26,6 @@ jobs:
       - image: cimg/node:20.0
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package-lock.json" }}
