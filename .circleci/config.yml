@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  test-node:
+    docker:
+      - image: cimg/node:24.13.1
+    steps:
+      - run: node --version
+      - run: npm --version
+
+workflows:
+  test-node-workflow:
+    jobs:
+      - test-node
